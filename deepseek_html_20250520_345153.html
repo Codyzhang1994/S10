@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* 自定义碟片样式 */
+        .disc {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #555;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .disc.active {
+            background: #ff9900;
+            transform: rotate(30deg);
+        }
+        #progress {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主音轨播放器 -->
+    <audio id="mainTrack" src="main.mp3"></audio>
+    <!-- 自定义控件 -->
+    <button id="playPause">播放/暂停</button>
+    <input type="range" id="progress" min="0" max="100" value="0">
+    <!-- 音轨碟片 -->
+    <div id="tracks">
+        <div class="disc" data-track="bass.mp3"></div>
+        <div class="disc" data-track="drums.mp3"></div>
+        <!-- 更多音轨... -->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
