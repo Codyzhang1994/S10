@@ -1,0 +1,18 @@
+// app.js
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const mainAudio = document.getElementById('mainTrack');
+const tracks = {}; // 存储加载的音轨Buffer
+
+// 预加载所有音轨
+async function loadTrack(url) {
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+    tracks[url] = audioBuffer;
+}
+
+// 加载所有碟片音轨
+document.querySelectorAll('.disc').forEach(disc => {
+    const trackFile = disc.dataset.track;
+    loadTrack(trackFile);
+});
